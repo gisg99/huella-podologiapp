@@ -1,111 +1,158 @@
+/* Fuentes empaquetadas en el build (offline, sin CDN). Solo subconjunto latino. */
+@import '@fontsource-variable/fraunces/wght.css';
+@import '@fontsource/plus-jakarta-sans/latin-400.css';
+@import '@fontsource/plus-jakarta-sans/latin-500.css';
+@import '@fontsource/plus-jakarta-sans/latin-600.css';
+@import '@fontsource/plus-jakarta-sans/latin-700.css';
+@import '@fontsource/plus-jakarta-sans/latin-800.css';
+
+@import 'tailwindcss';
+
+/* ---- Tokens de diseño: "verde azulado sereno" + acento arcilla ----
+   Los colores son variables que cambian con el tema; el @theme los expone
+   como utilidades (bg-primary, text-ink, border-line, …). */
+@theme {
+  --color-bg: var(--c-bg);
+  --color-surface: var(--c-surface);
+  --color-surface-2: var(--c-surface-2);
+  --color-ink: var(--c-ink);
+  --color-muted: var(--c-muted);
+  --color-line: var(--c-line);
+  --color-primary: var(--c-primary);
+  --color-primary-ink: var(--c-primary-ink);
+  --color-primary-soft: var(--c-primary-soft);
+  --color-accent: var(--c-accent);
+  --color-accent-soft: var(--c-accent-soft);
+  --color-danger: var(--c-danger);
+  --color-danger-soft: var(--c-danger-soft);
+  --color-warn: var(--c-warn);
+  --color-ok: var(--c-ok);
+
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-display: 'Fraunces Variable', Fraunces, Georgia, 'Times New Roman', serif;
+
+  --radius-xl: 16px;
+  --radius-2xl: 20px;
+}
+
+/* Tema claro (base) */
 :root {
-  --text: #6b6375;
-  --text-h: #08060d;
-  --bg: #fff;
-  --border: #e5e4e7;
-  --code-bg: #f4f3ec;
-  --accent: #aa3bff;
-  --accent-bg: rgba(170, 59, 255, 0.1);
-  --accent-border: rgba(170, 59, 255, 0.5);
-  --social-bg: rgba(244, 243, 236, 0.5);
-  --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+  --c-bg: #f2f5f2;
+  --c-surface: #ffffff;
+  --c-surface-2: #e8ede9;
+  --c-ink: #14302b;
+  --c-muted: #5b6b66;
+  --c-line: #d7dfda;
+  --c-primary: #0f766e;
+  --c-primary-ink: #ffffff;
+  --c-primary-soft: #d1e7e2;
+  --c-accent: #c56a3e;
+  --c-accent-soft: #f1ddd0;
+  --c-danger: #b23a2a;
+  --c-danger-soft: #f2d9d3;
+  --c-warn: #9a7320;
+  --c-ok: #2e7d52;
 
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --mono: ui-monospace, Consolas, monospace;
+  --shadow-card: 0 1px 2px rgba(20, 48, 43, 0.06), 0 8px 24px -12px rgba(20, 48, 43, 0.18);
+}
 
-  font: 18px/145% var(--sans);
-  letter-spacing: 0.18px;
-  color-scheme: light dark;
-  color: var(--text);
-  background: var(--bg);
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-
-  @media (max-width: 1024px) {
-    font-size: 16px;
+/* Tema oscuro cuando el sistema está en oscuro y el usuario no forzó claro */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --c-bg: #0c1513;
+    --c-surface: #14201d;
+    --c-surface-2: #1c2a26;
+    --c-ink: #e6ede9;
+    --c-muted: #9cb0aa;
+    --c-line: #27352f;
+    --c-primary: #53b6ab;
+    --c-primary-ink: #052421;
+    --c-primary-soft: #16302c;
+    --c-accent: #e08a5e;
+    --c-accent-soft: #35261d;
+    --c-danger: #e68472;
+    --c-danger-soft: #341c17;
+    --c-warn: #d7ac57;
+    --c-ok: #62b487;
+    --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.4), 0 10px 28px -14px rgba(0, 0, 0, 0.6);
+    color-scheme: dark;
   }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
-    --bg: #16171d;
-    --border: #2e303a;
-    --code-bg: #1f2028;
-    --accent: #c084fc;
-    --accent-bg: rgba(192, 132, 252, 0.15);
-    --accent-border: rgba(192, 132, 252, 0.5);
-    --social-bg: rgba(47, 48, 58, 0.5);
-    --shadow:
-      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
-  }
+/* Tema oscuro forzado por el usuario (gana en ambos sentidos) */
+:root[data-theme='dark'] {
+  --c-bg: #0c1513;
+  --c-surface: #14201d;
+  --c-surface-2: #1c2a26;
+  --c-ink: #e6ede9;
+  --c-muted: #9cb0aa;
+  --c-line: #27352f;
+  --c-primary: #53b6ab;
+  --c-primary-ink: #052421;
+  --c-primary-soft: #16302c;
+  --c-accent: #e08a5e;
+  --c-accent-soft: #35261d;
+  --c-danger: #e68472;
+  --c-danger-soft: #341c17;
+  --c-warn: #d7ac57;
+  --c-ok: #62b487;
+  --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.4), 0 10px 28px -14px rgba(0, 0, 0, 0.6);
+  color-scheme: dark;
+}
 
-  #social .button-icon {
-    filter: invert(1) brightness(2);
-  }
+html,
+body,
+#root {
+  height: 100%;
 }
 
 body {
   margin: 0;
+  background: var(--c-bg);
+  color: var(--c-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  /* Evita el resaltado azul al tocar en móvil */
+  -webkit-tap-highlight-color: transparent;
 }
 
-#root {
-  width: 1126px;
-  max-width: 100%;
-  margin: 0 auto;
-  text-align: center;
-  border-inline: 1px solid var(--border);
-  min-height: 100svh;
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
+/* Tipografía de títulos */
+h1, h2, h3, .font-display {
+  font-family: var(--font-display);
+  font-weight: 560;
+  letter-spacing: -0.01em;
 }
 
-h1,
-h2 {
-  font-family: var(--heading);
-  font-weight: 500;
-  color: var(--text-h);
+/* Números alineados (signos vitales, índices) */
+.tabular {
+  font-variant-numeric: tabular-nums;
 }
 
-h1 {
-  font-size: 56px;
-  letter-spacing: -1.68px;
-  margin: 32px 0;
-  @media (max-width: 1024px) {
-    font-size: 36px;
-    margin: 20px 0;
+/* Foco visible y accesible en todo control */
+:where(a, button, input, select, textarea, [tabindex]):focus-visible {
+  outline: 2px solid var(--c-primary);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/* Blanco de toque mínimo 44px para controles de la app */
+.tap {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
   }
 }
-h2 {
-  font-size: 24px;
-  line-height: 118%;
-  letter-spacing: -0.24px;
-  margin: 0 0 8px;
-  @media (max-width: 1024px) {
-    font-size: 20px;
-  }
-}
-p {
-  margin: 0;
-}
 
-code,
-.counter {
-  font-family: var(--mono);
-  display: inline-flex;
-  border-radius: 4px;
-  color: var(--text-h);
-}
-
-code {
-  font-size: 15px;
-  line-height: 135%;
-  padding: 4px 8px;
-  background: var(--code-bg);
+/* Sombra utilitaria basada en token */
+.shadow-card {
+  box-shadow: var(--shadow-card);
 }

@@ -108,7 +108,7 @@ export default function PatientRecord() {
           <Button full icon="plus" onClick={() => navigate(`/pacientes/${id}/visita`)}>
             {hasVisits ? ACTIONS.newVisit : ACTIONS.startFirstVisit}
           </Button>
-          <Button full variant="ghost" icon="pdf" onClick={() => navigate(`/pacientes/${id}/visita`)}>
+          <Button full variant="ghost" icon="pdf" onClick={() => navigate(`/pacientes/${id}/pdf`)}>
             {ACTIONS.exportPdf}
           </Button>
         </div>
@@ -152,7 +152,7 @@ export default function PatientRecord() {
                 {visits.map((v) => (
                   <Link
                     key={v.id}
-                    to={`/pacientes/${id}/visita`}
+                    to={`/pacientes/${id}/visita/${v.id}`}
                     className="tap flex items-center gap-3 rounded-2xl border border-line bg-surface p-3 shadow-card"
                   >
                     <div className="flex h-10 w-10 flex-none items-center justify-center rounded-xl bg-primary-soft text-primary">

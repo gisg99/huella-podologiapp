@@ -3,8 +3,10 @@ import { PROFILE_ID } from '../../constants/domain.js';
 
 // Perfil del especialista: un único registro con id fijo.
 export const profileRepo = {
-  get() {
-    return db.specialistProfile.get(PROFILE_ID);
+  // Devuelve `null` (no `undefined`) cuando aún no hay perfil, para que la UI
+  // distinga "sin perfil" de "cargando" (undefined) y no se quede en el splash.
+  async get() {
+    return (await db.specialistProfile.get(PROFILE_ID)) ?? null;
   },
 
   async exists() {

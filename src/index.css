@@ -156,3 +156,58 @@ h1, h2, h3, .font-display {
 .shadow-card {
   box-shadow: var(--shadow-card);
 }
+
+/* ---- Documento exportable a PDF (Fase 6) ----
+   El "papel" fija los tokens al tema claro para verse blanco en cualquier tema
+   y en impresión; los componentes reutilizados (pies SVG, símbolos) heredan
+   estos valores. */
+.pdf-sheet {
+  --color-bg: #ffffff;
+  --color-surface: #ffffff;
+  --color-surface-2: #f1f5f3;
+  --color-ink: #14302b;
+  --color-muted: #5b6b66;
+  --color-line: #cdd8d2;
+  --color-primary: #0f766e;
+  --color-primary-ink: #ffffff;
+  --color-primary-soft: #e3f0ed;
+  --color-accent: #c56a3e;
+  --color-accent-soft: #f1ddd0;
+  --color-danger: #b23a2a;
+  --color-warn: #9a7320;
+  --color-ok: #2e7d52;
+  background: #ffffff;
+  color: #14302b;
+}
+
+@page {
+  margin: 14mm;
+}
+
+@media print {
+  html,
+  body,
+  #root {
+    height: auto;
+    background: #ffffff !important;
+  }
+  /* Oculta todo lo que no sea el documento */
+  .no-print {
+    display: none !important;
+  }
+  .pdf-sheet {
+    box-shadow: none !important;
+    border: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    max-width: none !important;
+    width: 100% !important;
+  }
+  /* Cada visita del expediente inicia en página nueva */
+  .pdf-page-break {
+    break-before: page;
+  }
+  .pdf-avoid-break {
+    break-inside: avoid;
+  }
+}

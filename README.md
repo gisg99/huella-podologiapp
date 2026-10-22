@@ -49,7 +49,7 @@ src/
 - [x] **Fase 3** — Pies en SVG: mapa de lesiones y Semmes-Weinstein.
 - [x] **Fase 4** — Historial, comparación y gráficas de evolución.
 - [x] **Fase 5** — Fotos con compresión y almacenamiento.
-- [ ] Fase 6 — Exportación a PDF (visita y expediente completo).
+- [x] **Fase 6** — Exportación a PDF (visita y expediente completo).
 - [ ] Fase 7 — Respaldo (exportar/importar), PIN, persistencia y avisos.
 - [ ] Fase 8 — Pulido, accesibilidad, pruebas en teléfono real.
 

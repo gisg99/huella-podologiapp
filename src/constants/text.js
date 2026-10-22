@@ -221,6 +221,32 @@ export const SW_POINTS = {
   heel: 'Talón',
 };
 
+// Exportación a PDF (Fase 6).
+export const PDF = {
+  title: 'Exportar PDF',
+  scopeVisit: 'Esta visita',
+  scopeFull: 'Expediente completo',
+  print: 'Guardar como PDF',
+  printing: 'Preparando…',
+  patient: 'Paciente',
+  vitals: 'Signos vitales',
+  footExam: 'Examen del pie',
+  feet: 'Mapa de lesiones y sensibilidad',
+  lesionMap: 'Lesiones',
+  sensitivity: 'Semmes-Weinstein',
+  treatment: 'Tratamiento',
+  indications: 'Indicaciones',
+  photos: 'Fotos clínicas',
+  signature: 'Firma del profesional',
+  generatedOn: (d) => `Generado el ${d}`,
+  noFinalized: 'No hay visitas finalizadas para exportar.',
+  hint: 'Se abrirá el diálogo de impresión; elige “Guardar como PDF”.',
+  asepsis: 'Asepsia',
+  debridement: 'Desbridación',
+  observations: 'Observaciones',
+  noData: 'Sin registro.',
+};
+
 // Fotos clínicas (Fase 5).
 export const PHOTOS = {
   take: 'Tomar o elegir foto',

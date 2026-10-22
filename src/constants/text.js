@@ -221,6 +221,21 @@ export const SW_POINTS = {
   heel: 'Talón',
 };
 
+// Fotos clínicas (Fase 5).
+export const PHOTOS = {
+  take: 'Tomar o elegir foto',
+  processing: 'Procesando…',
+  caption: 'Pie de foto',
+  captionPlaceholder: 'Describe la foto (opcional)…',
+  remove: 'Quitar',
+  close: 'Cerrar',
+  maxReached: 'Alcanzaste el máximo de fotos por visita.',
+  hint: 'Se comprimen en tu teléfono y no salen de aquí.',
+  deleteTitle: 'Eliminar foto',
+  deleteMessage: 'Esta foto se borrará de la visita. No se puede deshacer.',
+  addError: 'No se pudo agregar la foto.',
+};
+
 // Etiquetas de las métricas de evolución (Fase 4).
 export const METRICS = {
   hgt: { label: 'Glucosa (HGT)', unit: 'mg/dL' },

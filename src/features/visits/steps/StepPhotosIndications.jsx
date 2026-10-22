@@ -1,13 +1,12 @@
 import { Card, GroupLabel } from '../../../components/ui/Card.jsx';
 import { TextArea } from '../../../components/ui/Field.jsx';
-import EmptyState from '../../../components/ui/EmptyState.jsx';
 import Icon from '../../../components/Icon.jsx';
+import PhotoGallery from '../fields/PhotoGallery.jsx';
 import { useProfile } from '../../../app/useProfile.js';
 import { useObjectURL } from '../../../lib/useObjectURL.js';
-import { MAX_PHOTOS_PER_VISIT } from '../../../constants/domain.js';
 import { FIELDS, PROFILE } from '../../../constants/text.js';
 
-export default function StepPhotosIndications({ form, update }) {
+export default function StepPhotosIndications({ form, update, visit }) {
   const profile = useProfile();
   const signatureUrl = useObjectURL(profile?.signature || null);
 
@@ -28,9 +27,11 @@ export default function StepPhotosIndications({ form, update }) {
       <div>
         <GroupLabel>{FIELDS.photos}</GroupLabel>
         <div className="mt-2">
-          <EmptyState icon="plus" title={`Hasta ${MAX_PHOTOS_PER_VISIT} fotos por visita`}>
-            La captura y compresión de fotos se agrega en la Fase 5.
-          </EmptyState>
+          {visit?.id ? (
+            <PhotoGallery visitId={visit.id} />
+          ) : (
+            <p className="text-sm text-muted">Guarda la visita para agregar fotos.</p>
+          )}
         </div>
       </div>
 

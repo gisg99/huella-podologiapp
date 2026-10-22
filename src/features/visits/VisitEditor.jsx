@@ -125,7 +125,7 @@ export default function VisitEditor({ visit, previousClinical, patient }) {
       case 'treatment':
         return <StepTreatment {...common} />;
       case 'photosIndications':
-        return <StepPhotosIndications {...common} />;
+        return <StepPhotosIndications {...common} visit={visit} />;
       default:
         return null;
     }

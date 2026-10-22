@@ -33,6 +33,20 @@ const PATHS = {
     </>
   ),
   shield: <path d="M12 3 5 6v6c0 4.4 3 7.6 7 9 4-1.4 7-4.6 7-9V6l-7-3Z" />,
+  chart: (
+    <>
+      <path d="M4 5v14h16" />
+      <path d="m7 14 3-4 3 2 4-6" />
+    </>
+  ),
+  compare: (
+    <>
+      <path d="M8 4 4 8l4 4" />
+      <path d="M4 8h13" />
+      <path d="m16 20 4-4-4-4" />
+      <path d="M20 16H7" />
+    </>
+  ),
   foot: (
     <>
       <ellipse cx="10" cy="14" rx="5" ry="7" />

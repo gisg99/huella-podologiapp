@@ -8,6 +8,8 @@ import Patients from '../pages/Patients.jsx';
 import PatientNew from '../pages/PatientNew.jsx';
 import PatientEdit from '../pages/PatientEdit.jsx';
 import PatientRecord from '../pages/PatientRecord.jsx';
+import Evolution from '../pages/Evolution.jsx';
+import CompareVisits from '../pages/CompareVisits.jsx';
 import VisitEditorPage from '../pages/VisitEditorPage.jsx';
 import Settings from '../pages/Settings.jsx';
 import Onboarding from '../pages/Onboarding.jsx';
@@ -66,6 +68,8 @@ export const router = createHashRouter([
       { path: 'pacientes/nuevo', element: <PatientNew /> },
       { path: 'pacientes/:id', element: <PatientRecord /> },
       { path: 'pacientes/:id/editar', element: <PatientEdit /> },
+      { path: 'pacientes/:id/evolucion', element: <Evolution /> },
+      { path: 'pacientes/:id/comparar', element: <CompareVisits /> },
       { path: 'pacientes/:id/pdf', element: <Placeholder title="Exportar PDF" icon="pdf" phase="Fase 6" back /> },
       { path: 'respaldo', element: <Placeholder title={NAV.backup} icon="backup" phase="Fase 7" /> },
       { path: 'ajustes', element: <Settings /> },

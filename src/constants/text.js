@@ -221,6 +221,43 @@ export const SW_POINTS = {
   heel: 'Talón',
 };
 
+// Etiquetas de las métricas de evolución (Fase 4).
+export const METRICS = {
+  hgt: { label: 'Glucosa (HGT)', unit: 'mg/dL' },
+  weight: { label: 'Peso', unit: 'kg' },
+  eva: { label: 'Dolor (EVA)', unit: '/10' },
+  sw: { label: 'Puntos sensibles', unit: '/18' },
+  lesions: { label: 'Lesiones activas', unit: '' },
+  bp: { label: 'Presión arterial', unit: 'mmHg', n1: 'Sistólica', n2: 'Diastólica' },
+  itb: { label: 'Índice tobillo-brazo', unit: '', n1: 'Der.', n2: 'Izq.' },
+};
+
+export const EVOLUTION = {
+  title: 'Evolución',
+  open: 'Evolución',
+  metrics: 'Métricas',
+  vsPrev: 'vs. anterior',
+  noData: 'Necesitas al menos una visita finalizada para ver la evolución.',
+  oneVisit: 'Con una sola visita aún no hay tendencia; se dibuja al finalizar la siguiente.',
+};
+
+export const COMPARE = {
+  title: 'Comparar visitas',
+  open: 'Comparar',
+  visitA: 'Visita A',
+  visitB: 'Visita B',
+  need2: 'Necesitas al menos dos visitas finalizadas para comparar.',
+  samePick: 'Elige dos visitas distintas para comparar.',
+  noChange: 'Sin cambios entre estas dos visitas.',
+  changed: 'cambió',
+  sections: {
+    visit: 'Visita',
+    footExam: 'Examen del pie',
+    disordersNails: 'Trastornos y uñas',
+    lesionsSensitivity: 'Lesiones y sensibilidad',
+  },
+};
+
 // Instrucciones cortas de los dos pasos con mapa de pie.
 export const FOOT_MAP = {
   lesionHint: 'Elige una lesión y toca el pie para marcarla. Toca una marca para quitarla.',

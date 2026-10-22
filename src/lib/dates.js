@@ -14,6 +14,16 @@ const DATETIME_FMT = new Intl.DateTimeFormat('es-MX', {
   minute: '2-digit',
 });
 
+const SHORT_FMT = new Intl.DateTimeFormat('es-MX', { day: '2-digit', month: 'short' });
+
+/** "09 oct" (sin año), para ejes y etiquetas compactas. */
+export function formatDateShort(value) {
+  if (!value) return '';
+  const d = value instanceof Date ? value : new Date(value);
+  if (Number.isNaN(d.getTime())) return '';
+  return SHORT_FMT.format(d);
+}
+
 /** Edad en años a partir de la fecha de nacimiento (ISO o Date). */
 export function calcAge(birthDate, at = new Date()) {
   if (!birthDate) return null;

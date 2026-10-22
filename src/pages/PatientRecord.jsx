@@ -13,7 +13,17 @@ import { usePatient } from '../features/patients/usePatients.js';
 import { patientRepo, visitRepo } from '../db/index.js';
 import { calcAge, formatDate } from '../lib/dates.js';
 import { deriveAlerts } from '../lib/alerts.js';
-import { SEX as SEX_LABELS, FIELDS, ACTIONS, MESSAGES, VISIT_STATUS } from '../constants/text.js';
+import { SEX as SEX_LABELS, FIELDS, ACTIONS, MESSAGES, VISIT_STATUS, EVOLUTION, COMPARE } from '../constants/text.js';
+
+// Chips de resumen de una visita para la línea de tiempo (datos clave si existen).
+function visitChips(v) {
+  const chips = [];
+  if (v.vitals?.hgt) chips.push(`HGT ${v.vitals.hgt}`);
+  if (v.vitals?.eva) chips.push(`EVA ${v.vitals.eva}`);
+  const lesions = Array.isArray(v.lesionMarks) ? v.lesionMarks.length : 0;
+  if (lesions > 0) chips.push(`${lesions} ${lesions === 1 ? 'lesión' : 'lesiones'}`);
+  return chips;
+}
 
 function DataRow({ label, value }) {
   if (!value) return null;
@@ -113,6 +123,17 @@ export default function PatientRecord() {
           </Button>
         </div>
 
+        {hasVisits && (
+          <div className="grid grid-cols-2 gap-3">
+            <Button full variant="subtle" icon="chart" onClick={() => navigate(`/pacientes/${id}/evolucion`)}>
+              {EVOLUTION.open}
+            </Button>
+            <Button full variant="subtle" icon="compare" onClick={() => navigate(`/pacientes/${id}/comparar`)}>
+              {COMPARE.open}
+            </Button>
+          </div>
+        )}
+
         {/* Resumen de datos */}
         <div>
           <GroupLabel>Datos</GroupLabel>
@@ -159,8 +180,18 @@ export default function PatientRecord() {
                       <Icon name="foot" size={20} />
                     </div>
                     <div className="min-w-0 flex-1">
-                      <p className="text-sm font-bold">{formatDate(v.date)}</p>
-                      <p className="text-xs text-muted">{VISIT_STATUS[v.status] || v.status}</p>
+                      <p className="truncate text-sm font-bold">
+                        {formatDate(v.date)}
+                        {v.reason ? <span className="font-normal text-muted"> · {v.reason}</span> : null}
+                      </p>
+                      <div className="mt-0.5 flex flex-wrap items-center gap-1.5">
+                        <span className="text-xs text-muted">{VISIT_STATUS[v.status] || v.status}</span>
+                        {visitChips(v).map((c) => (
+                          <Badge key={c} tone="neutral">
+                            {c}
+                          </Badge>
+                        ))}
+                      </div>
                     </div>
                     <Icon name="chevron" size={18} className="flex-none text-muted" />
                   </Link>

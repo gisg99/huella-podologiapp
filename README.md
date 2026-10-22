@@ -44,10 +44,10 @@ src/
 
 - [x] **Fase 0** — Andamiaje: carpetas, Tailwind, PWA offline, Dexie (esquema
       versionado + repositorios), router, constantes de dominio y textos.
-- [ ] Fase 1 — Perfil del especialista (onboarding) + pacientes (alta, edición, búsqueda).
-- [ ] Fase 2 — Visita por pasos (autoguardado, precarga, resaltado de cambios).
-- [ ] Fase 3 — Pies en SVG: mapa de lesiones y Semmes-Weinstein.
-- [ ] Fase 4 — Historial, comparación y gráficas de evolución.
+- [x] **Fase 1** — Perfil del especialista (onboarding) + pacientes (alta, edición, búsqueda).
+- [x] **Fase 2** — Visita por pasos (autoguardado, precarga, resaltado de cambios).
+- [x] **Fase 3** — Pies en SVG: mapa de lesiones y Semmes-Weinstein.
+- [x] **Fase 4** — Historial, comparación y gráficas de evolución.
 - [ ] Fase 5 — Fotos con compresión y almacenamiento.
 - [ ] Fase 6 — Exportación a PDF (visita y expediente completo).
 - [ ] Fase 7 — Respaldo (exportar/importar), PIN, persistencia y avisos.

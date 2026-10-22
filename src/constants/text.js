@@ -208,6 +208,30 @@ export const SW_POINT_STATES = {
   notEvaluated: 'No evaluado',
 };
 
+// Nombre anatómico de cada punto del Test de Semmes-Weinstein.
+export const SW_POINTS = {
+  hallux: 'Pulpejo 1.er dedo',
+  toe3: 'Pulpejo 3.er dedo',
+  toe5: 'Pulpejo 5.º dedo',
+  mth1: '1.ª cabeza metatarsal',
+  mth3: '3.ª cabeza metatarsal',
+  mth5: '5.ª cabeza metatarsal',
+  midMedial: 'Mediopié medial',
+  midLateral: 'Mediopié lateral',
+  heel: 'Talón',
+};
+
+// Instrucciones cortas de los dos pasos con mapa de pie.
+export const FOOT_MAP = {
+  lesionHint: 'Elige una lesión y toca el pie para marcarla. Toca una marca para quitarla.',
+  lesionActive: 'Lesión activa',
+  noMarks: 'Aún no hay marcas en esta vista.',
+  marksPlaced: 'Marcas colocadas',
+  legend: 'Leyenda',
+  swHint: 'Toca un punto para ciclar su estado: Sensible → No sensible → No evaluado.',
+  swPointsTitle: 'Puntos evaluados',
+};
+
 export const TREATMENT = {
   asepsis: 'Asepsia',
   debridement: 'Desbridación',

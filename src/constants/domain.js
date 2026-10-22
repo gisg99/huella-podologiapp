@@ -124,6 +124,22 @@ export const LESION_SYMBOLS = [
 // Estados de cada punto del Test de Semmes-Weinstein.
 export const SW_POINT_STATES = ['sensitive', 'notSensitive', 'notEvaluated'];
 
+// Puntos del Test de Semmes-Weinstein (protocolo plantar estándar, 9 por pie).
+// `x`/`y` son coordenadas en el lienzo del pie (vista plantar del pie derecho,
+// espacio 0..120 × 0..264); el pie izquierdo las espeja. El orden define la
+// numeración visible (1–9) y el índice de cada estado en `sensitivity`.
+export const SW_POINTS = [
+  { key: 'hallux', x: 90, y: 44 },
+  { key: 'toe3', x: 52, y: 30 },
+  { key: 'toe5', x: 26, y: 46 },
+  { key: 'mth1', x: 84, y: 92 },
+  { key: 'mth3', x: 56, y: 86 },
+  { key: 'mth5', x: 32, y: 96 },
+  { key: 'midMedial', x: 82, y: 150 },
+  { key: 'midLateral', x: 40, y: 150 },
+  { key: 'heel', x: 62, y: 210 },
+];
+
 // Tratamiento.
 export const ASEPSIS_ITEMS = ['channelCleaning', 'onychotomy', 'despiculization', 'massage'];
 export const DEBRIDEMENT_ITEMS = ['debulking', 'exfoliation', 'other'];

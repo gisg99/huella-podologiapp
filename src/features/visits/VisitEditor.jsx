@@ -16,7 +16,8 @@ import StepFootExam from './steps/StepFootExam.jsx';
 import StepDisordersNails from './steps/StepDisordersNails.jsx';
 import StepTreatment from './steps/StepTreatment.jsx';
 import StepPhotosIndications from './steps/StepPhotosIndications.jsx';
-import StepPlaceholder from './steps/StepPlaceholder.jsx';
+import StepLesionMap from './steps/StepLesionMap.jsx';
+import StepSensitivity from './steps/StepSensitivity.jsx';
 
 const AUTOSAVE_MS = 600;
 
@@ -118,9 +119,9 @@ export default function VisitEditor({ visit, previousClinical, patient }) {
       case 'disordersNails':
         return <StepDisordersNails {...common} />;
       case 'lesionMap':
-        return <StepPlaceholder icon="foot" title="Mapa de lesiones" />;
+        return <StepLesionMap {...common} />;
       case 'sensitivity':
-        return <StepPlaceholder icon="foot" title="Test de Semmes-Weinstein" />;
+        return <StepSensitivity {...common} />;
       case 'treatment':
         return <StepTreatment {...common} />;
       case 'photosIndications':

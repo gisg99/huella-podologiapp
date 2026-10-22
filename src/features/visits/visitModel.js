@@ -7,7 +7,14 @@ import {
   ASEPSIS_ITEMS,
   DEBRIDEMENT_ITEMS,
   NON_PREFILLED_VISIT_FIELDS,
+  SW_POINTS_PER_FOOT,
 } from '../../constants/domain.js';
+
+// Sensibilidad vacía: cada punto de cada pie empieza como "no evaluado".
+export function emptySensitivity() {
+  const foot = () => Array.from({ length: SW_POINTS_PER_FOOT }, () => 'notEvaluated');
+  return { right: foot(), left: foot() };
+}
 
 function sidePair() {
   return { right: null, left: null };
@@ -56,8 +63,8 @@ export function emptyClinical() {
     disordersOther: '',
     nailDisorders: fromKeys(NAIL_DISORDERS, () => ({ value: null, side: 'none' })),
     nailDisordersOther: '',
-    lesionMarks: [], // Fase 3
-    sensitivity: null, // Fase 3
+    lesionMarks: [], // marcas del mapa de lesiones: { id, type, side, view, x, y }
+    sensitivity: emptySensitivity(), // Test de Semmes-Weinstein por pie y punto
     treatment: {
       asepsis: fromKeys(ASEPSIS_ITEMS, false),
       debridement: fromKeys(DEBRIDEMENT_ITEMS, false),

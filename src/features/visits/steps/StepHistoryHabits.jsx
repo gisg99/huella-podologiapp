@@ -24,8 +24,10 @@ export default function StepHistoryHabits({ form, prev, update }) {
     update({ diseases: [...set] });
   };
 
-  const setPH = (key, patch) =>
-    update({ podiatricHistory: { ...form.podiatricHistory, [key]: { ...form.podiatricHistory[key], ...patch } } });
+  const setPH = (key, patch) => {
+    const base = form.podiatricHistory || {};
+    update({ podiatricHistory: { ...base, [key]: { ...base[key], ...patch } } });
+  };
 
   const diseasesChanged = isChanged(form.diseases, prev?.diseases);
   const activityChanged = isChanged(form.lifestyle.activityLevel, prev?.lifestyle?.activityLevel);
@@ -53,7 +55,7 @@ export default function StepHistoryHabits({ form, prev, update }) {
         <GroupLabel>{FIELDS.podiatricHistory}</GroupLabel>
         <Card className="mt-2 flex flex-col gap-2.5">
           {PODIATRIC_HISTORY.map((k) => {
-            const item = form.podiatricHistory[k];
+            const item = form.podiatricHistory?.[k] || { present: false, note: '' };
             return (
               <div key={k}>
                 <CheckChip

@@ -33,7 +33,17 @@ export default function SignaturePad({ value, onChange, label = 'Firma' }) {
     );
   }
 
-  return <Pad label={label} onSave={onChange} onCancel={value ? () => setEditing(false) : null} />;
+  return (
+    <Pad
+      label={label}
+      onSave={(blob) => {
+        onChange(blob);
+        // Solo pasamos a la vista de previsualización si realmente se firmó.
+        if (blob) setEditing(false);
+      }}
+      onCancel={value ? () => setEditing(false) : null}
+    />
+  );
 }
 
 function Pad({ label, onSave, onCancel }) {
@@ -64,8 +74,22 @@ function Pad({ label, onSave, onCancel }) {
 
   function start(e) {
     e.preventDefault();
+    // Captura el puntero para que el trazo siga aunque el dedo salga del canvas
+    // (más fiable en móvil/táctil).
+    try {
+      canvasRef.current.setPointerCapture?.(e.pointerId);
+    } catch {
+      /* no soportado: se ignora */
+    }
     drawing.current = true;
     last.current = pos(e);
+    // Un toque simple (sin mover) también cuenta como firma: pinta un punto.
+    const ctx = canvasRef.current.getContext('2d');
+    ctx.beginPath();
+    ctx.moveTo(last.current.x, last.current.y);
+    ctx.lineTo(last.current.x + 0.1, last.current.y + 0.1);
+    ctx.stroke();
+    dirty.current = true;
   }
   function move(e) {
     if (!drawing.current) return;
@@ -79,7 +103,14 @@ function Pad({ label, onSave, onCancel }) {
     last.current = p;
     dirty.current = true;
   }
-  function end() {
+  function end(e) {
+    if (e && e.pointerId != null) {
+      try {
+        canvasRef.current.releasePointerCapture?.(e.pointerId);
+      } catch {
+        /* no-op */
+      }
+    }
     drawing.current = false;
   }
 

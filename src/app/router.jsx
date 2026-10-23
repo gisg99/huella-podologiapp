@@ -13,9 +13,8 @@ import CompareVisits from '../pages/CompareVisits.jsx';
 import PdfExport from '../pages/PdfExport.jsx';
 import VisitEditorPage from '../pages/VisitEditorPage.jsx';
 import Settings from '../pages/Settings.jsx';
+import Backup from '../pages/Backup.jsx';
 import Onboarding from '../pages/Onboarding.jsx';
-import Placeholder from '../pages/Placeholder.jsx';
-import { NAV } from '../constants/text.js';
 
 function Splash() {
   return (
@@ -72,7 +71,7 @@ export const router = createHashRouter([
       { path: 'pacientes/:id/editar', element: <PatientEdit /> },
       { path: 'pacientes/:id/evolucion', element: <Evolution /> },
       { path: 'pacientes/:id/comparar', element: <CompareVisits /> },
-      { path: 'respaldo', element: <Placeholder title={NAV.backup} icon="backup" phase="Fase 7" /> },
+      { path: 'respaldo', element: <Backup /> },
       { path: 'ajustes', element: <Settings /> },
       { path: '*', element: <Navigate to="/" replace /> },
     ],

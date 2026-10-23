@@ -211,3 +211,18 @@ h1, h2, h3, .font-display {
     break-inside: avoid;
   }
 }
+
+/* Sacudida al ingresar un PIN incorrecto. */
+@keyframes huella-shake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-7px); }
+  40%, 80% { transform: translateX(7px); }
+}
+.animate-shake {
+  animation: huella-shake 0.45s ease-in-out;
+}
+@media (prefers-reduced-motion: reduce) {
+  .animate-shake {
+    animation: none;
+  }
+}

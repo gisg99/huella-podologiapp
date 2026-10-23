@@ -50,7 +50,7 @@ src/
 - [x] **Fase 4** — Historial, comparación y gráficas de evolución.
 - [x] **Fase 5** — Fotos con compresión y almacenamiento.
 - [x] **Fase 6** — Exportación a PDF (visita y expediente completo).
-- [ ] Fase 7 — Respaldo (exportar/importar), PIN, persistencia y avisos.
+- [x] **Fase 7** — Respaldo (exportar/importar), PIN de bloqueo, persistencia y avisos.
 - [ ] Fase 8 — Pulido, accesibilidad, pruebas en teléfono real.
 
 ## Pendientes a validar con el especialista (NOM-004-SSA3-2012 y datos personales)

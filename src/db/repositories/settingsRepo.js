@@ -36,4 +36,23 @@ export const settingsRepo = {
   setTheme(theme) {
     return this.set(SETTINGS_KEYS.theme, theme);
   },
+
+  // PIN de bloqueo (solo hash + sal; nunca el PIN en claro).
+  async hasPin() {
+    const hash = await this.get(SETTINGS_KEYS.pinHash, null);
+    return !!hash;
+  },
+  async getPin() {
+    const hash = await this.get(SETTINGS_KEYS.pinHash, null);
+    const salt = await this.get(SETTINGS_KEYS.pinSalt, null);
+    return hash && salt ? { hash, salt } : null;
+  },
+  async setPin(hash, salt) {
+    await this.set(SETTINGS_KEYS.pinHash, hash);
+    await this.set(SETTINGS_KEYS.pinSalt, salt);
+  },
+  async clearPin() {
+    await db.settings.delete(SETTINGS_KEYS.pinHash);
+    await db.settings.delete(SETTINGS_KEYS.pinSalt);
+  },
 };

@@ -6,7 +6,9 @@ import Icon from '../components/Icon.jsx';
 import ProfileForm from '../features/profile/ProfileForm.jsx';
 import { useProfile } from '../app/useProfile.js';
 import { useStoragePersist } from '../app/useStoragePersist.js';
-import { NAV, PROFILE, MESSAGES } from '../constants/text.js';
+import PinSetup from '../features/security/PinSetup.jsx';
+import Button from '../components/ui/Button.jsx';
+import { NAV, PROFILE, MESSAGES, SECURITY } from '../constants/text.js';
 
 function formatBytes(n) {
   if (n == null) return '—';
@@ -18,6 +20,8 @@ export default function Settings() {
   const profile = useProfile();
   const { persisted, usage, quota } = useStoragePersist();
   const [savedAt, setSavedAt] = useState(0);
+  const [changingPin, setChangingPin] = useState(false);
+  const [pinChanged, setPinChanged] = useState(false);
 
   return (
     <div>
@@ -59,15 +63,46 @@ export default function Settings() {
         </div>
 
         <div>
-          <GroupLabel>Seguridad</GroupLabel>
+          <GroupLabel>{SECURITY.group}</GroupLabel>
           <Card className="mt-2">
-            <div className="flex items-center gap-2 text-muted">
-              <Icon name="shield" size={18} />
-              <p className="text-sm">PIN de bloqueo y respaldos: se configuran en la Fase 7.</p>
+            <div className="flex items-center gap-2">
+              <Icon name="shield" size={18} className="text-ok" />
+              <p className="flex-1 text-sm font-semibold">{SECURITY.pinActive}</p>
+            </div>
+            {pinChanged && (
+              <p className="mt-2 flex items-center gap-1.5 text-sm font-semibold text-ok">
+                <Icon name="check" size={16} stroke={3} /> {SECURITY.changed}
+              </p>
+            )}
+            <div className="mt-3">
+              <Button variant="ghost" onClick={() => setChangingPin(true)}>
+                {SECURITY.changePin}
+              </Button>
             </div>
           </Card>
         </div>
       </div>
+
+      {changingPin && (
+        <div
+          className="fixed inset-0 z-[60] bg-bg"
+          style={{
+            paddingTop: 'env(safe-area-inset-top, 0px)',
+            paddingBottom: 'env(safe-area-inset-bottom, 0px)',
+          }}
+        >
+          <div className="mx-auto h-full w-full max-w-md">
+            <PinSetup
+              mode="change"
+              onDone={() => {
+                setChangingPin(false);
+                setPinChanged(true);
+              }}
+              onCancel={() => setChangingPin(false)}
+            />
+          </div>
+        </div>
+      )}
     </div>
   );
 }

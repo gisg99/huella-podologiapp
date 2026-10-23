@@ -411,6 +411,53 @@ export const PROFILE = {
   signature: 'Firma',
 };
 
+// Respaldo (Fase 7): exportar e importar a archivo.
+export const BACKUP = {
+  title: 'Respaldo',
+  exportGroup: 'Exportar',
+  restoreGroup: 'Restaurar',
+  exportIntro: 'Crea un archivo con todo el expediente para guardarlo en tu teléfono.',
+  exportBtn: 'Exportar respaldo',
+  exporting: 'Preparando…',
+  patients: 'Pacientes',
+  visits: 'Visitas',
+  photos: 'Fotos',
+  lastBackup: (days) =>
+    days === 0 ? 'Último respaldo: hoy' : `Último respaldo hace ${days} ${days === 1 ? 'día' : 'días'}`,
+  neverBackup: 'Aún no has hecho un respaldo',
+  chooseFile: 'Elegir archivo de respaldo…',
+  restoreBtn: 'Restaurar',
+  restoreIntro: 'Carga un archivo de respaldo para recuperar tus datos en este dispositivo.',
+  fileSummary: (d) => `Respaldo del ${d}`,
+  restoreTitle: 'Restaurar respaldo',
+  restoreWarning:
+    'Esto REEMPLAZA todos los datos actuales (pacientes, visitas y fotos) por los del archivo. No se puede deshacer.',
+  restoreConfirm: 'Sí, reemplazar',
+  exportDone: 'Respaldo exportado. Guárdalo en un lugar seguro.',
+  restoreDone: (p, v) => `Restaurado: ${p} pacientes y ${v} visitas.`,
+  badFile: 'El archivo no es un respaldo válido de Huella.',
+  newerVersion: 'Este respaldo es de una versión más nueva del app. Actualiza antes de restaurar.',
+  readError: 'No se pudo leer el archivo.',
+  localNote: 'Todo es local: el archivo solo existe en tu teléfono, nada se envía a internet.',
+};
+
+// Seguridad (Fase 7): PIN de bloqueo.
+export const SECURITY = {
+  group: 'Seguridad',
+  pinActive: 'PIN de bloqueo activo',
+  changePin: 'Cambiar PIN',
+  lockTitle: 'Ingresa tu PIN',
+  setupTitle: 'Crea tu PIN',
+  confirmTitle: 'Confírmalo',
+  changeTitle: 'Nuevo PIN',
+  setupHint: '4 dígitos para proteger los datos de tus pacientes en este dispositivo.',
+  noRecovery: '⚠ No hay forma de recuperarlo. Guárdalo bien.',
+  wrongPin: 'PIN incorrecto',
+  mismatch: 'Los PIN no coinciden. Inténtalo de nuevo.',
+  deleteKey: 'Borrar',
+  changed: 'PIN actualizado',
+};
+
 // Mensajes y estados varios
 export const MESSAGES = {
   draftSaved: 'Borrador guardado',
